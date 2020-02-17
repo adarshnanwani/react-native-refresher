@@ -29,10 +29,13 @@ const App = () => {
     const otherItems = items.filter(item => item.id !== id);
     setItems(otherItems);
   };
+  const handleAdd = text => {
+    setItems([...items, {id: uuid(), text}]);
+  };
   return (
     <View style={styles.container}>
       <Header />
-      <AddItem />
+      <AddItem addItem={handleAdd} />
       <FlatList
         data={items}
         renderItem={({item}) => (
