@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useInputState} from '../hooks/useInputState';
@@ -12,8 +13,14 @@ import {useInputState} from '../hooks/useInputState';
 const AddItem = ({addItem}) => {
   const [item, setItem, resetItem] = useInputState('');
   const submitHandler = () => {
-    addItem(item);
-    resetItem();
+    if (item === '') {
+      Alert.alert('Error', 'Please enter an item', [{text: 'Ok'}], {
+        cancelable: true,
+      });
+    } else {
+      addItem(item);
+      resetItem();
+    }
   };
   return (
     <View>
