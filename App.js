@@ -3,6 +3,7 @@ import {View, StyleSheet, FlatList} from 'react-native';
 import uuid from 'uuid/v4';
 import Header from './src/components/Header';
 import ListItem from './src/components/ListItem';
+import AddItem from './src/components/AddItem';
 
 const App = () => {
   const [items, setItems] = useState([
@@ -31,6 +32,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Header />
+      <AddItem />
       <FlatList
         data={items}
         renderItem={({item}) => (
